@@ -1,13 +1,24 @@
-import Inicio from "./components/inicio.js";
-import Header from "./components/header.js";
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Navbar from "./components/navbar.js";
+import AlumnosPage from "./components/AlumnosPage.js";
+import AlumnosForm from "./components/AlumnosForm.js";
+import AlumnosNotFound from "./components/AlumnosNotFound.js";
+
 
 function App() {
   return (
     <div className="App">
-      <Inicio/>
-      <Header/>      
+      <BrowserRouter>
+          <Navbar/>         
+          <Routes>
+            <Route path="/" element={<AlumnosPage/>}/>
+            <Route path="/new" element={<AlumnosForm/>}/>
+            <Route path="*" element={<AlumnosNotFound/>}/>
+          </Routes>        
+        </BrowserRouter>        
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
